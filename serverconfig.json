@@ -1,0 +1,13 @@
+{
+    "license_agreement_FoxChat": false,
+    "license_agreement_nlohmann-json": false,
+
+    "custom_port": 9020,
+    "message_length_limit": 200,
+    "message_cooldown_milliseconds": 500,
+
+    "welcome_message": "{tColor_red}Joined as {clientip_id}\nWelcome to My FoxChat Server!{tColor_reset}",
+    "spam_warning_message": "{tColor_yellow}(server) Slow down! You are sending messages too fast!{tColor_reset}",
+    "message_prefix_self": "{tColor_yellow}(you) {tColor_gray}{clientip_id} > ",
+    "message_prefix_others": "{clientip_id} > "
+}
