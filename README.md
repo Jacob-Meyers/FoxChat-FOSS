@@ -1,8 +1,8 @@
 # FoxChat - Terminal-Only Chatting Client & Server
 
-## ***[Download <- Latest Windows Version (client)](windows version)***
+### ***[Download <- Latest Windows Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.14.2025/Windows-FoxChat-Client.exe)***
 
-## ***[Download <- Latest Linux Version (client)](windows version)***
+### ***[Download <- Latest Linux Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.14.2025/Linux-FoxChat-Client)***
 
 ## _There are no account sign ups!_
 
