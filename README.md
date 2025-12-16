@@ -49,8 +49,9 @@ To start the server, you got two options.
 ```null
 git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS
 ```
-4. Install ***clang ***(lookup how for your distro)
-5. Run command
+
+1. Install ***clang ***(lookup how for your distro)
+2. Run command
 
 ```null
 clang++ server.cpp -o server -Iinclude
@@ -60,24 +61,26 @@ clang++ server.cpp -o server -Iinclude
 
 1. Download and install ***[MSYS2](https://www.msys2.org/)***
 2. Follow instructions on how to use MSYS2 installer in the same link below the download
-3. Start ***'MSYS2 MINGW64'*** from the start menu.
+3. Start ***‘MSYS2 MINGW64’*** from the start menu.
 4. In the console run the command (Shift+insert to paste btw)
 
 ```null
 pacman -S mingw-w64-ucrt-x86_64-gcc
 ```
-5. Locate the installation of the compiler executable (e.g., 'C:\msys64\ucrt64\bin').
-6. Search for **'Environment Variables'** in the start menu and select **"Edit the system environment variables"**.
-7. Click the **'Environment Variables'** button.
-8. Under 'System variables', select the 'path' variable and click **"Edit"**.
-9. Click **'New'** and add the path to the 'bin' directory from your MSYS2 installation (e.g., 'C:\msys64\ucrt64\bin').
-10. Click **'OK'** on all windows to save the changes.
-11. Now, go to the folder you want to host the server at, right click and select **'Open in Terminal'** and run the command
+
+1. Locate the installation of the compiler executable (e.g., ‘C:\msys64\ucrt64\bin’).
+2. Search for **‘Environment Variables’** in the start menu and select **“Edit the system environment variables”**.
+3. Click the **‘Environment Variables’** button.
+4. Under ‘System variables’, select the ‘path’ variable and click **“Edit”**.
+5. Click **‘New’** and add the path to the ‘bin’ directory from your MSYS2 installation (e.g., ‘C:\msys64\ucrt64\bin’).
+6. Click **‘OK’** on all windows to save the changes.
+7. Now, go to the folder you want to host the server at, right click and select **‘Open in Terminal’** and run the command
 
 ```null
 git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ server.cpp -o server.exe -Iinclude -lws2_32
 ```
-12. If all went right and you got no errors, start the server by starting ***'server.exe'*** of course!
+
+1. If all went right and you got no errors, start the server by starting ***‘server.exe’*** of course!
 
 ### 2. Download latest release (Windows)
 
@@ -86,8 +89,7 @@ git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ serve
 
 # Server Customization
 
-To customize the server open the ***'serverconfig.json'*** file and you can tweak these values anyway you like.
-! It is advised that you should not change the ***'admin_username_ip'*** from ***'127.0.0.1'*** OR ***'disabled'*** as anyone on that other ip can pose as an admin, ADMINS DON'T HAVE SPECIAL PERMISSIONS !
+To customize the server open the ***‘serverconfig.json’*** file and you can tweak these values anyway you like. ! It is advised that you should not change the ***‘admin_username_ip’*** from ***‘127.0.0.1’*** OR ***‘disabled’*** as anyone on that other ip can pose as an admin, ADMINS DON’T HAVE SPECIAL PERMISSIONS !
 
 ### Server Variables API
 
@@ -95,11 +97,11 @@ As you might see there is little brackets like these {} in the strings of some o
 
 Available Variables:
 
-- ***{clientip_id}*** > the combined ip and session id of the client (ex. 10.54.10.2_92012), used for private/targeted messages like _'message_prefix_self'_ or _'welcome_message'_
+- ***{clientip_id}*** > the combined ip and session id of the client (ex. 10.54.10.2_92012), used for private/targeted messages like _‘message_prefix_self’_ or _‘welcome_message’_
 - ***{clientip_raw}*** > just the ip of the client (ex. 10.54.10.2_92012), also made for private/targeted messages
 - ***{custom_port}*** > the optional custom port set also in the server config. (not recommended to change port as a custom client would only be able to join on ports other than 9020).
 
-      --_Color Variables--_
+**   --Color Variables--**
 
 - ***{tColor_reset}*** > resets the text color
 - ***{tColor_red}*** > makes the text color red
