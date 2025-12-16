@@ -5,7 +5,7 @@
     "custom_port": 9020,
     "message_length_limit": 200,
     "message_cooldown_milliseconds": 500,
-    "admin_username_ip": "127.0.0.1",
+    "admin_username_ip": "disabled",
 
     "welcome_message": "{tColor_purple}Joined as {clientip_id}\n{tColor_blue}Welcome to My FoxChat Server!\n{tColor_reset}",
     "spam_warning_message": "{tColor_yellow}(server) Slow down! You are sending messages too fast!{tColor_reset}",
