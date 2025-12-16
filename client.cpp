@@ -22,6 +22,8 @@
 #include <vector>
 #include <limits>
 
+std::string client_version = "v12.15.2025";
+
 
 SOCKET_TYPE clientSocket;
 std::vector<std::string> client_chat_history;
@@ -54,7 +56,7 @@ int main() {
     #endif
     std::string sel_address = "127.0.0.1";
     std::string sel_port_temp = "9020";
-    printf("\e[0;31mFoxChat Client v12.14.2025\e[0;37m\n\n");
+    printf(("\e[0;31mFoxChat Client - " + client_version + "\e[0;37m\n\n").c_str());
     printf("Server Address ~> ");
     fflush(stdout);
     std::getline(std::cin, sel_address);

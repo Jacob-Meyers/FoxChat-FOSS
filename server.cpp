@@ -31,6 +31,8 @@ using sock_t = int;
 #define CLOSESOCK close
 #endif
 
+std::string serverVersion = "v12.15.2025";
+
 static int lenlimit = 200;
 static int max_clients_connected = 100;
 std::vector<sock_t> clientSockets;
@@ -115,7 +117,7 @@ void handleClient(sock_t clientSocket, const char* clientIpRawIn) {
     clientIpRaw = clientIpRawIn;
     int uniqueCode = generateUniqueCode();
     clientIp = clientIpRaw + "_" + std::to_string(uniqueCode);
-    if (clientIpRaw == std::string("127.0.0.1")) clientIp = "\033[31mAdmin\033[0m_" + std::to_string(uniqueCode);
+    if (clientIpRaw == serverConfigJson["admin_username_ip"]) clientIp = "\033[31mAdmin\033[0m_" + std::to_string(uniqueCode);
 
     {
         std::lock_guard<std::mutex> lock(clientMutex);
@@ -202,20 +204,29 @@ int main() {
     port = serverConfigJson["custom_port"].get<int>();
     int lenlimit = std::clamp(serverConfigJson["message_length_limit"].get<int>(), 0, 511);
 
+    if (!serverConfigJson["license_agreement_FoxChat"] || !serverConfigJson["license_agreement_nlohmann-json"]) {
+        printf("By downloading, using, or referencing FoxChat, you acknowledge that the creator is not responsible or liable for any illegal activity, misuse, or damages resulting from the use of this software.\n"
+            "Use this software at your own risk.\n\n");
+        printf("Confirm Agreement? (type \"YES\" to confirm) ~> ");
+        std::string agreed;
+        std::getline(std::cin, agreed);
+        if (agreed != "YES") { printf("\nFailed to confirm agreement!"); return 0; }
+    }
+
     if (!serverConfigJson["license_agreement_FoxChat"]) {
         std::string line;
-        std::ifstream MyReadFile("FoxChat_LICENSE");
+        std::ifstream MyReadFile("server_licenses/FoxChat_LICENSE");
         if (MyReadFile.is_open()) {
             while (getline(MyReadFile, line)) {
                 std::cout << line << std::endl;
             }
             MyReadFile.close();
         } else {
-            std::cerr << "Error: Unable to open the FoxChat License file, redownload from source (do not rename the file)" << std::endl;
+            std::cerr << "Error: Unable to open the (./server_licenses/license_agreement_FoxChat) FoxChat License file, redownload from source (do not rename the file)" << std::endl;
             return 1;
         }
 
-        printf("Confirm Agreement to This License? (type \"YES\" to confirm) ~> ");
+        printf("\nConfirm Agreement to The FoxChat (Apache License Version 2.0) License? (type \"YES\" to confirm) ~> ");
         std::string agreed;
         std::getline(std::cin, agreed);
         if (agreed != "YES") { printf("\nFailed to confirm agreement to the FoxChat License!"); return 0; }
@@ -223,18 +234,18 @@ int main() {
     } 
     if (!serverConfigJson["license_agreement_nlohmann-json"]) {
         std::string line;
-        std::ifstream MyReadFile("nlohmann-json_LICENSE");
+        std::ifstream MyReadFile("server_licenses/nlohmann-json_LICENSE");
         if (MyReadFile.is_open()) {
             while (getline(MyReadFile, line)) {
                 std::cout << line << std::endl;
             }
             MyReadFile.close();
         } else {
-            std::cerr << "Error: Unable to open the nlohmann-json License file, redownload from source (do not rename the file)" << std::endl;
+            std::cerr << "Error: Unable to open the (./server_licenses/license_agreement_nlohmann-json) nlohmann-json License file, redownload from source (do not rename the file)" << std::endl;
             return 1;
         }
 
-        printf("Confirm Agreement to This License? (type \"YES\" to confirm) ~> ");
+        printf("\nConfirm Agreement to The nlohmann-json (MIT License) License? (type \"YES\" to confirm) ~> ");
         std::string agreed;
         std::getline(std::cin, agreed);
         if (agreed != "YES") { printf("\nFailed to confirm agreement to the nlohmann-json License!"); return 0; }
@@ -266,6 +277,7 @@ int main() {
     if (bind(s, (sockaddr*)&a, sizeof(a)) == SOCKET_ERROR) return 1;
     if (listen(s, SOMAXCONN) == SOCKET_ERROR) return 1;
 
+    printf(("FoxChat Server - " + serverVersion + "\n\n").c_str());
     printf("Server listening on port %d...\n", port);
 
     while (true) {

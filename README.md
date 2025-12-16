@@ -1,8 +1,10 @@
 # FoxChat - Terminal-Only Chatting Client & Server
 
-### ***[Download <- Latest Windows Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.14.2025/Windows-FoxChat-Client.exe)***
+### ***[Download <- Latest Windows Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Windows-FoxChat-Client.exe)***
 
-### ***[Download <- Latest Linux Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.14.2025/Linux-FoxChat-Client)***
+### ***[Download <- Latest Linux Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Linux-FoxChat-Client)***
+
+### ***[Download <- Latest Windows Version (server)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Windows.Precompiled.Foxchat.Server.v12-15-2025.zip)***
 
 ## _There are no account sign ups!_
 
@@ -73,7 +75,7 @@ pacman -S mingw-w64-ucrt-x86_64-gcc
 11. Now, go to the folder you want to host the server at, right click and select **'Open in Terminal'** and run the command
 
 ```null
-git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ server.cpp -o server.exe -Iinclude -lws2_32git
+git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ server.cpp -o server.exe -Iinclude -lws2_32
 ```
 12. If all went right and you got no errors, start the server by starting ***'server.exe'*** of course!
 
@@ -85,6 +87,7 @@ git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ serve
 # Server Customization
 
 To customize the server open the ***'serverconfig.json'*** file and you can tweak these values anyway you like.
+! It is advised that you should not change the ***'admin_username_ip'*** from ***'127.0.0.1'*** as anyone on that other ip can pose as an admin, ADMINS DON'T HAVE SPECIAL PERMISSIONS !
 
 ### Server Variables API
 
