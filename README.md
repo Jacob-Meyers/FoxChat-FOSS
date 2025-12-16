@@ -87,7 +87,7 @@ git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ serve
 # Server Customization
 
 To customize the server open the ***'serverconfig.json'*** file and you can tweak these values anyway you like.
-! It is advised that you should not change the ***'admin_username_ip'*** from ***'127.0.0.1'*** as anyone on that other ip can pose as an admin, ADMINS DON'T HAVE SPECIAL PERMISSIONS !
+! It is advised that you should not change the ***'admin_username_ip'*** from ***'127.0.0.1'*** OR ***'disabled'*** as anyone on that other ip can pose as an admin, ADMINS DON'T HAVE SPECIAL PERMISSIONS !
 
 ### Server Variables API
 
