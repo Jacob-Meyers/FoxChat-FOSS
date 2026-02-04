@@ -1,8 +1,8 @@
 {
     "admin_username_ip": "disabled",
     "custom_port": 9020,
-    "license_agreement_FoxChat": true,
-    "license_agreement_nlohmann-json": true,
+    "license_agreement_FoxChat": false,
+    "license_agreement_nlohmann-json": false,
     "message_cooldown_milliseconds": 500,
     "message_length_limit": 200,
     "message_prefix_others": "{clientip_id} > ",
