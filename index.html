@@ -1,0 +1,277 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FoxChat-FOSS</title>
+
+  <!-- GitHub Markdown CSS -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/sindresorhus/github-markdown-css/github-markdown.css">
+
+  <style>
+    :root {
+      --bg: #0d1117;
+      --fg: #c9d1d9;
+      --muted: #8b949e;
+      --border: #30363d;
+      --accent: #58a6ff;
+      --code-bg: #161b22;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    /* Layout */
+    .stackedit__left {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      overflow-y: auto;
+      background: #010409;
+      border-right: 1px solid var(--border);
+      padding: 20px;
+    }
+    .stackedit__right {
+      margin-left: 280px;
+    }
+    
+	/* TOC styling */
+	.stackedit__toc a {
+	  color: var(--fg);
+	  text-decoration: none;
+	  display: block;
+	  padding: 4px 6px;       /* slightly bigger padding */
+	  border-radius: 4px;
+	  margin-bottom: 4px;     /* GAP between TOC items */
+	}
+	
+	.stackedit__toc li:not(.toc-h3) a {
+	  font-weight: 600;
+	  font-size: 14px;
+	}
+	
+	.stackedit__toc .toc-h3 a {
+	  color: var(--muted);
+	  font-weight: 400;
+	  font-size: 13px;
+	  padding-left: 16px;
+	  border-left: 1px solid var(--border);
+	}
+	
+	/* Hover effect */
+	.stackedit__toc a:hover {
+	  color: var(--accent);
+	  background: rgba(88,166,255,0.15);
+	}
+	
+	/* Recently clicked/active entry */
+	.stackedit__toc a.active {
+	  color: var(--accent);
+	  background: rgba(88,166,255,0.2);
+	}
+
+    /* Markdown body */
+    .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+      background: var(--bg);
+      color: var(--fg);
+    }
+    .markdown-body pre,
+    .markdown-body code {
+      background: var(--code-bg);
+    }
+    .markdown-body a { color: var(--accent); }
+    .markdown-body hr { border-color: var(--border); }
+    .markdown-body table th,
+    .markdown-body table td { border-color: var(--border); }
+
+    @media (max-width: 900px) {
+      .stackedit__left {
+        position: relative;
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .stackedit__right { margin-left: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stackedit__left">
+    <div class="stackedit__toc">
+      
+<ul>
+<li><a href="#foxchat---terminal-only-chatting-client--server">FoxChat - Terminal-Only Chatting Client & Server</a>
+<ul>
+<li>
+<ul>
+<li><a href="#download---latest-windows-version-client">Download <- Latest Windows Version (client)</a></li>
+<li><a href="#download---latest-linux-version-client">Download <- Latest Linux Version (client)</a></li>
+<li><a href="#download---latest-windows-version-server">Download <- Latest Windows Version (server)</a></li>
+</ul>
+</li>
+<li><a href="#there-are-no-account-sign-ups">There are no account sign ups!</a></li>
+<li><a href="#there-is-no-chat-history">There is no chat history!</a></li>
+<li><a href="#servers-are-customizable-and-lightweight">Servers are customizable and lightweight!</a></li>
+<li><a href="#disclaimer">Disclaimer:</a></li>
+<li><a href="#one-more-time-always-use-a-vpn-to-stay-safe.">One more time, always use a VPN to stay safe.</a></li>
+</ul>
+</li>
+<li><a href="#server-setup">Server Setup</a>
+<ul>
+<li>
+<ul>
+<li><a href="#build-it-yourself-linux-windows-recommended">1. Build it yourself (Linux, Windows) RECOMMENDED</a></li>
+<li><a href="#linux">Linux:</a></li>
+<li><a href="#windows">Windows:</a></li>
+<li><a href="#download-latest-release-windows">2. Download latest release (Windows)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#server-customization">Server Customization</a>
+<ul>
+<li>
+<ul>
+<li><a href="#server-variables-api">Server Variables API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </div>
+
+  <div class="stackedit__right">
+    <div class="stackedit__html markdown-body">
+      <h1 id="foxchat---terminal-only-chatting-client--server">FoxChat - Terminal-Only Chatting Client &amp; Server</h1>
+<h3 id="download---latest-windows-version-client"><em><strong><a href="https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Windows-FoxChat-Client.exe">Download &lt;- Latest Windows Version (client)</a></strong></em></h3>
+<h3 id="download---latest-linux-version-client"><em><strong><a href="https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Linux-FoxChat-Client">Download &lt;- Latest Linux Version (client)</a></strong></em></h3>
+<h3 id="download---latest-windows-version-server"><em><strong><a href="https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Windows.Precompiled.Foxchat.Server.v12-15-2025.zip">Download &lt;- Latest Windows Version (server)</a></strong></em></h3>
+<h2 id="there-are-no-account-sign-ups"><em>There are no account sign ups!</em></h2>
+<p>FoxChat has no account system, instead it uses IP’s and a random session id for each client.</p>
+<p><strong>USE AN VPN, IF YOU DON’T YOU ARE PUTTING YOUR SECURITY AT RISK AS YOUR IP IS BEING EXPOSED!</strong></p>
+<p>Ex:</p>
+<p>10.54.10.2_92012 &gt; {client ip}_{session id}</p>
+<p><em>! The session id for your or others clients won’t be the same every time !</em></p>
+<h2 id="there-is-no-chat-history"><em>There is no chat history!</em></h2>
+<p>FoxChat does not officially support chat history, all the history is stored on the client side in the ram for ease of use and to understand where the conversation was when you joined. This does not mean someone can’t just stay logged in and log messages! Don’t do anything illegal… this was made as a little project and because I found no appealing terminal-only chat software.</p>
+<h2 id="servers-are-customizable-and-lightweight"><em>Servers are customizable and lightweight!</em></h2>
+<p>Servers are customizable in the means that you can color and format, messages, join alerts, and errors. You can also set message cool downs (on by default) and character limits on the messages.</p>
+<h2 id="disclaimer"><em><strong>Disclaimer:</strong></em></h2>
+<p>By downloading, using, or referencing FoxChat, you acknowledge that the creator is <strong>not responsible or liable</strong> for any illegal activity, misuse, or damages resulting from the use of this software. Use this software at your own risk.</p>
+<h2 id="one-more-time-always-use-a-vpn-to-stay-safe.">One more time, always use a VPN to stay safe.</h2>
+<p>Definition of VPN (from <a href="https://en.wikipedia.org/wiki/Virtual_private_network">wikiedia.org</a>): A <strong>virtual private network</strong> (<strong>VPN</strong>) is an <a href="https://en.wikipedia.org/wiki/Overlay_network">overlay network</a> that uses <a href="https://en.wikipedia.org/wiki/Network_virtualization">network virtualization</a> to extend a <a href="https://en.wikipedia.org/wiki/Private_network">private network</a> across a public network, such as the <a href="https://en.wikipedia.org/wiki/Internet">Internet</a>, via the use of <a href="https://en.wikipedia.org/wiki/Encryption">encryption</a> and <a href="https://en.wikipedia.org/wiki/Tunneling_protocol">tunneling protocols</a>.<a href="https://en.wikipedia.org/wiki/Virtual_private_network#cite_note-NIST-1">[1]</a> In a VPN, a tunneling protocol is used to transfer network messages from one <a href="https://en.wikipedia.org/wiki/Host_(network)">network host</a> to another.</p>
+<h1 id="server-setup">Server Setup</h1>
+<p>To start the server, you got two options.</p>
+<h3 id="build-it-yourself-linux-windows-recommended">1. Build it yourself (Linux, Windows) RECOMMENDED</h3>
+<h3 id="linux"><em><strong>Linux:</strong></em></h3>
+<ol>
+<li>Open a terminal window.</li>
+<li>CD to a directory where you want the server.</li>
+<li>Run command</li>
+</ol>
+<pre class=" language-null"><code class="prism  language-null">git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS
+</code></pre>
+<ol>
+<li>Install ***clang ***(lookup how for your distro)</li>
+<li>Run command</li>
+</ol>
+<pre class=" language-null"><code class="prism  language-null">clang++ server.cpp -o server -Iinclude
+</code></pre>
+<h3 id="windows"><em><strong>Windows:</strong></em></h3>
+<ol>
+<li>Download and install <em><strong><a href="https://www.msys2.org/">MSYS2</a></strong></em></li>
+<li>Follow instructions on how to use MSYS2 installer in the same link below the download</li>
+<li>Start <em><strong>‘MSYS2 MINGW64’</strong></em> from the start menu.</li>
+<li>In the console run the command (Shift+insert to paste btw)</li>
+</ol>
+<pre class=" language-null"><code class="prism  language-null">pacman -S mingw-w64-ucrt-x86_64-gcc
+</code></pre>
+<ol>
+<li>Locate the installation of the compiler executable (e.g., ‘C:\msys64\ucrt64\bin’).</li>
+<li>Search for <strong>‘Environment Variables’</strong> in the start menu and select <strong>“Edit the system environment variables”</strong>.</li>
+<li>Click the <strong>‘Environment Variables’</strong> button.</li>
+<li>Under ‘System variables’, select the ‘path’ variable and click <strong>“Edit”</strong>.</li>
+<li>Click <strong>‘New’</strong> and add the path to the ‘bin’ directory from your MSYS2 installation (e.g., ‘C:\msys64\ucrt64\bin’).</li>
+<li>Click <strong>‘OK’</strong> on all windows to save the changes.</li>
+<li>Now, go to the folder you want to host the server at, right click and select <strong>‘Open in Terminal’</strong> and run the command</li>
+</ol>
+<pre class=" language-null"><code class="prism  language-null">git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ server.cpp -o server.exe -Iinclude -lws2_32
+</code></pre>
+<ol>
+<li>If all went right and you got no errors, start the server by starting <em><strong>‘server.exe’</strong></em> of course!</li>
+</ol>
+<h3 id="download-latest-release-windows">2. Download latest release (Windows)</h3>
+<ol>
+<li>Download and extract the latest windows precompiled version from the releases page.</li>
+<li>Start server.exe</li>
+</ol>
+<h1 id="server-customization">Server Customization</h1>
+<p>To customize the server open the <em><strong>‘serverconfig.json’</strong></em> file and you can tweak these values anyway you like. ! It is advised that you should not change the <em><strong>‘admin_username_ip’</strong></em> from <em><strong>‘127.0.0.1’</strong></em> OR <em><strong>‘disabled’</strong></em> as anyone on that other ip can pose as an admin, ADMINS DON’T HAVE SPECIAL PERMISSIONS !</p>
+<h3 id="server-variables-api">Server Variables API</h3>
+<p>As you might see there is little brackets like these {} in the strings of some of the values. These are replaced with values from the server.</p>
+<p>Available Variables:</p>
+<ul>
+<li><em><strong>{clientip_id}</strong></em> &gt; the combined ip and session id of the client (ex. 10.54.10.2_92012), used for private/targeted messages like <em>‘message_prefix_self’</em> or <em>‘welcome_message’</em></li>
+<li><em><strong>{clientip_raw}</strong></em> &gt; just the ip of the client (ex. 10.54.10.2_92012), also made for private/targeted messages</li>
+<li><em><strong>{custom_port}</strong></em> &gt; the optional custom port set also in the server config. (not recommended to change port as a custom client would only be able to join on ports other than 9020).</li>
+</ul>
+<p><strong>–Color Variables–</strong></p>
+<ul>
+<li><em><strong>{tColor_reset}</strong></em> &gt; resets the text color</li>
+<li><em><strong>{tColor_red}</strong></em> &gt; makes the text color red</li>
+<li><em><strong>{tColor_yellow}</strong></em> &gt; makes the text color red</li>
+<li><em><strong>{tColor_green}</strong></em> &gt; makes the text color red</li>
+<li><em><strong>{tColor_blue}</strong></em> &gt; makes the text color red</li>
+<li><em><strong>{tColor_purple}</strong></em> &gt; makes the text color red</li>
+<li><em><strong>{tColor_gray}</strong></em> &gt; makes the text color red</li>
+</ul>
+
+    </div>
+  </div>
+
+  <!-- JS: Smooth scroll and click highlighting only -->
+<script>
+const tocLinks = document.querySelectorAll('.stackedit__toc a');
+
+// Smooth scroll on click with offset and highlight clicked item
+tocLinks.forEach(a => {
+  const href = a.getAttribute('href');
+  if (href?.startsWith('#')) {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      
+      // Remove active from all links
+      tocLinks.forEach(link => link.classList.remove('active'));
+      
+      // Add active to clicked link
+      a.classList.add('active');
+      
+      // Scroll to target
+      const id = href.slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.scrollY - 90;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>
