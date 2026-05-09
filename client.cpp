@@ -22,7 +22,7 @@
 #include <vector>
 #include <limits>
 
-std::string client_version = "v12.15.2025";
+std::string client_version = "v5.8.2026";
 
 
 SOCKET_TYPE clientSocket;
@@ -60,6 +60,10 @@ int main() {
     printf("Server Address ~> ");
     fflush(stdout);
     std::getline(std::cin, sel_address);
+    printf("Server Port (Default: 9020) ~> ");
+    fflush(stdout);
+    std::getline(std::cin, sel_port_temp);
+    if (sel_port_temp.empty()) sel_port_temp = "9020";
     int sel_port = std::stoi(sel_port_temp);
     printf("People will be able to see your ip, mask this with a VPN (ALWAYS USE VPN!) Continue Y/n ~> ");
     fflush(stdout);

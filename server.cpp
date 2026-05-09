@@ -31,7 +31,7 @@ using sock_t = int;
 #define CLOSESOCK close
 #endif
 
-std::string serverVersion = "v12.15.2025";
+std::string serverVersion = "v5.8.2026";
 
 static int lenlimit = 200;
 static int max_clients_connected = 100;
@@ -117,7 +117,7 @@ void handleClient(sock_t clientSocket, const char* clientIpRawIn) {
     clientIpRaw = clientIpRawIn;
     int uniqueCode = generateUniqueCode();
     clientIp = clientIpRaw + "_" + std::to_string(uniqueCode);
-    if (clientIpRaw == serverConfigJson["admin_username_ip"]) clientIp = "\033[31mAdmin\033[0m_" + std::to_string(uniqueCode);
+    if (clientIpRaw == serverConfigJson["admin_username_ip"].get<std::string>()) clientIp = "\033[31mAdmin\033[0m_" + std::to_string(uniqueCode);
 
     {
         std::lock_guard<std::mutex> lock(clientMutex);
@@ -222,7 +222,7 @@ int main() {
             }
             MyReadFile.close();
         } else {
-            std::cerr << "Error: Unable to open the (./server_licenses/license_agreement_FoxChat) FoxChat License file, redownload from source (do not rename the file)" << std::endl;
+            std::cerr << "Error: Unable to open the (./server_licenses/FoxChat_LICENSE) FoxChat License file, redownload from source (do not rename the file)" << std::endl;
             return 1;
         }
 
@@ -241,7 +241,7 @@ int main() {
             }
             MyReadFile.close();
         } else {
-            std::cerr << "Error: Unable to open the (./server_licenses/license_agreement_nlohmann-json) nlohmann-json License file, redownload from source (do not rename the file)" << std::endl;
+            std::cerr << "Error: Unable to open the (./server_licenses/nlohmann-json_LICENSE) nlohmann-json License file, redownload from source (do not rename the file)" << std::endl;
             return 1;
         }
 
@@ -251,6 +251,28 @@ int main() {
         if (agreed != "YES") { printf("\nFailed to confirm agreement to the nlohmann-json License!"); return 0; }
         serverConfigJson["license_agreement_nlohmann-json"] = true;
     } 
+    if (!serverConfigJson["license_agreement_WebUI"]) {
+        std::string line;
+        std::ifstream MyReadFile("server_licenses/WebUI_LICENSE");
+        if (MyReadFile.is_open()) {
+            while (getline(MyReadFile, line)) {
+                std::cout << line << std::endl;
+            }
+            MyReadFile.close();
+        } else {
+            std::cerr << "Error: Unable to open the (./server_licenses/WebUI_LICENSE) WebUI License file, redownload from source (do not rename the file)" << std::endl;
+            return 1;
+        }
+
+        printf("\nConfirm Agreement to The WebUI (MIT License) License? (type \"YES\" to confirm) ~> ");
+        std::string agreed;
+        std::getline(std::cin, agreed);
+        if (agreed != "YES") { printf("\nFailed to confirm agreement to the WebUI License!"); return 0; }
+        serverConfigJson["license_agreement_WebUI"] = true;
+    } 
+
+
+    
     std::ofstream out("serverconfig.json");
     out << serverConfigJson.dump(4);
     out.close();
