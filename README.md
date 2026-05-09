@@ -1,4 +1,4 @@
-# FoxChat - Terminal-Only Chatting Client & Server
+# FoxChat - Terminal-Focused Chatting Client & Server
 
 ### ***[Download <- Latest Linux Version (clientgui)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-gui.tar.gz)***
 
