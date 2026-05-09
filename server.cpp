@@ -195,80 +195,54 @@ void handleClient(sock_t clientSocket, const char* clientIpRawIn) {
 
 
 int main() {
-    std::ifstream f("serverconfig.json");
+    const std::string configPath = "serverconfig.json";
+    std::ifstream f(configPath);
+    
     if (!f.is_open()) {
-        std::cerr << "Error: Could not open the \'serverconfig.json\' file." << std::endl;
-        return 1;
-    }
-    serverConfigJson = nlohmann::json::parse(f);
-    port = serverConfigJson["custom_port"].get<int>();
-    int lenlimit = std::clamp(serverConfigJson["message_length_limit"].get<int>(), 0, 511);
+        std::cout << "Config not found. Generating default 'serverconfig.json'..." << std::endl;
+        
+        serverConfigJson = {
+            {"custom_port", 9020},
+            {"message_length_limit", 200},
+            {"message_cooldown_milliseconds", 500},
+            {"admin_username_ip", "127.0.0.1"},
+            {"welcome_message", "{tColor_yellow}Welcome! You are {clientip_id} on port {custom_port}{tColor_reset}"},
+            {"spam_warning_message", "{tColor_red}System: Please wait before sending another message.{tColor_reset}"},
+            {"message_prefix_self", "{tColor_gray}(you) {clientip_id} > {tColor_reset}"},
+            {"message_prefix_others", "{tColor_green}{clientip_id} > {tColor_reset}"},
+            {"softwarelicense_disclaimer_agreement", false}
+        };
 
-    if (!serverConfigJson["license_agreement_FoxChat"] || !serverConfigJson["license_agreement_nlohmann-json"]) {
+        std::ofstream out(configPath);
+        if (out.is_open()) {
+            out << serverConfigJson.dump(4);
+            out.close();
+        } else {
+            std::cerr << "Critical Error: Could not create config file!" << std::endl;
+            return 1;
+        }
+    } else {
+        try {
+            f >> serverConfigJson;
+            f.close();
+        } catch (const std::exception& e) {
+            std::cerr << "Error parsing JSON: " << e.what() << std::endl;
+            return 1;
+        }
+    }
+
+    port = serverConfigJson.value("custom_port", 9020);
+    lenlimit = std::clamp(serverConfigJson.value("message_length_limit", 200), 0, 511);
+
+    if (!serverConfigJson["softwarelicense_disclaimer_agreement"]) {
         printf("By downloading, using, or referencing FoxChat, you acknowledge that the creator is not responsible or liable for any illegal activity, misuse, or damages resulting from the use of this software.\n"
+            "By using or modifying this software you agree to all the licenses (Found at /usr/share/licenses/foxchat-server or in ./server_licenses).\n"
             "Use this software at your own risk.\n\n");
         printf("Confirm Agreement? (type \"YES\" to confirm) ~> ");
         std::string agreed;
         std::getline(std::cin, agreed);
         if (agreed != "YES") { printf("\nFailed to confirm agreement!"); return 0; }
-    }
-
-    if (!serverConfigJson["license_agreement_FoxChat"]) {
-        std::string line;
-        std::ifstream MyReadFile("server_licenses/FoxChat_LICENSE");
-        if (MyReadFile.is_open()) {
-            while (getline(MyReadFile, line)) {
-                std::cout << line << std::endl;
-            }
-            MyReadFile.close();
-        } else {
-            std::cerr << "Error: Unable to open the (./server_licenses/FoxChat_LICENSE) FoxChat License file, redownload from source (do not rename the file)" << std::endl;
-            return 1;
-        }
-
-        printf("\nConfirm Agreement to The FoxChat (Apache License Version 2.0) License? (type \"YES\" to confirm) ~> ");
-        std::string agreed;
-        std::getline(std::cin, agreed);
-        if (agreed != "YES") { printf("\nFailed to confirm agreement to the FoxChat License!"); return 0; }
-        serverConfigJson["license_agreement_FoxChat"] = true;
-    } 
-    if (!serverConfigJson["license_agreement_nlohmann-json"]) {
-        std::string line;
-        std::ifstream MyReadFile("server_licenses/nlohmann-json_LICENSE");
-        if (MyReadFile.is_open()) {
-            while (getline(MyReadFile, line)) {
-                std::cout << line << std::endl;
-            }
-            MyReadFile.close();
-        } else {
-            std::cerr << "Error: Unable to open the (./server_licenses/nlohmann-json_LICENSE) nlohmann-json License file, redownload from source (do not rename the file)" << std::endl;
-            return 1;
-        }
-
-        printf("\nConfirm Agreement to The nlohmann-json (MIT License) License? (type \"YES\" to confirm) ~> ");
-        std::string agreed;
-        std::getline(std::cin, agreed);
-        if (agreed != "YES") { printf("\nFailed to confirm agreement to the nlohmann-json License!"); return 0; }
-        serverConfigJson["license_agreement_nlohmann-json"] = true;
-    } 
-    if (!serverConfigJson["license_agreement_WebUI"]) {
-        std::string line;
-        std::ifstream MyReadFile("server_licenses/WebUI_LICENSE");
-        if (MyReadFile.is_open()) {
-            while (getline(MyReadFile, line)) {
-                std::cout << line << std::endl;
-            }
-            MyReadFile.close();
-        } else {
-            std::cerr << "Error: Unable to open the (./server_licenses/WebUI_LICENSE) WebUI License file, redownload from source (do not rename the file)" << std::endl;
-            return 1;
-        }
-
-        printf("\nConfirm Agreement to The WebUI (MIT License) License? (type \"YES\" to confirm) ~> ");
-        std::string agreed;
-        std::getline(std::cin, agreed);
-        if (agreed != "YES") { printf("\nFailed to confirm agreement to the WebUI License!"); return 0; }
-        serverConfigJson["license_agreement_WebUI"] = true;
+        serverConfigJson["softwarelicense_disclaimer_agreement"] = true;
     } 
 
 
