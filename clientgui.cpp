@@ -1,3 +1,4 @@
+#define WEBUI_USE_STATIC_LIB
 #include "webui.hpp"
 #include <iostream>
 #include <string>

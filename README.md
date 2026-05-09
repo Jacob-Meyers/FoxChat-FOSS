@@ -1,10 +1,15 @@
 # FoxChat - Terminal-Only Chatting Client & Server
 
-### ***[Download <- Latest Windows Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Windows-FoxChat-Client.exe)***
+### ***[Download <- Latest Linux Version (clientgui)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-gui.tar.gz)***
 
-### ***[Download <- Latest Linux Version (client)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Linux-FoxChat-Client)***
+### ***[Download <- Latest Linux Version (client-nogui)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-cli.tar.gz)***
 
-### ***[Download <- Latest Windows Version (server)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v12.15.2025/Windows.Precompiled.Foxchat.Server.v12-15-2025.zip)***
+### ***[Download <- Latest Linux Version (server)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/foxchat-server.tar.gz)***
+
+### ***[Download <- Latest Windows Version (clientgui)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/Windows-Precompiled-clientgui_5.8.2026.exe)***
+
+### ***[Download <- Latest Windows Version (server)](https://github.com/Jacob-Meyers/FoxChat-FOSS/releases/download/v5.8.2026/Windows-Precompiled-Server_5.8.2026.exe)***
+
 
 ## _There are no account sign ups!_
 
@@ -82,10 +87,20 @@ git clone https://github.com/Jacob-Meyers/FoxChat-FOSS;cd FoxChat-FOSS;g++ serve
 
 1. If all went right and you got no errors, start the server by starting ***‘server.exe’*** of course!
 
-### 2. Download latest release (Windows)
+### 2. Download latest release (Linux, Windows)
 
-1. Download and extract the latest windows precompiled version from the releases page.
-2. Start server.exe
+### ***Linux:***
+
+1. Download the latest linux precompiled version from the releases page.
+2. Start the server binary
+
+
+### ***Windows:***
+
+1. Download the latest windows precompiled version from the releases page.
+2. Start the server executable
+
+### ***Afterwards Customization (BOTH):***
 
 # Server Customization
 

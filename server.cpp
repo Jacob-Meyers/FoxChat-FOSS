@@ -234,7 +234,7 @@ int main() {
     port = serverConfigJson.value("custom_port", 9020);
     lenlimit = std::clamp(serverConfigJson.value("message_length_limit", 200), 0, 511);
 
-    if (!serverConfigJson["softwarelicense_disclaimer_agreement"]) {
+    if (serverConfigJson.value("softwarelicense_disclaimer_agreement", false) == false) {
         printf("By downloading, using, or referencing FoxChat, you acknowledge that the creator is not responsible or liable for any illegal activity, misuse, or damages resulting from the use of this software.\n"
             "By using or modifying this software you agree to all the licenses (Found at /usr/share/licenses/foxchat-server or in ./server_licenses).\n"
             "Use this software at your own risk.\n\n");
